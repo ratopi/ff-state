@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Freifunk State</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+	<script type="text/javascript" src="de.ratopi.f4m2.state.js"></script>
+
+	<script type="text/javascript">
+		$( document ).ready(
+			function()
+			{
+				de.ratopi.f4m2.state( "https://raw.github.com/freifunk/api.freifunk.net/master/directory/directory.json" );
+			}
+		);
+	</script>
+
+</head>
+
+<body style="background-color:black; color:white;">
+
+<span id="state" style="padding:5px;"></span>
+<br/>
+<span id="info"></span>
+<br/>
+<table id="statusTable">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>#Nodes</th>
+		<th>Since</th>
+		<th>State</th>
+	</tr>
+</table>
+
+</body>
+
+</html>
