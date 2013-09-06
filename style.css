@@ -9,8 +9,12 @@ body {
 	padding: 5px;
 }
 
-#state.okay {
-	background-color: #green;
+#state.info {
+	color: yellow;
+}
+
+#state.success {
+	color: lime;
 }
 
 #state.error {
@@ -31,8 +35,12 @@ body {
 	padding: 3px;
 }
 
+#statusTable tr.datalate td {
+	background-color:#300;
+}
+
 #statusTable tr.failed td {
-	color: #444;
+	color: #f00;
 	font-style: italic;
 }
 
