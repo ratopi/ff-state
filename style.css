@@ -1,0 +1,26 @@
+
+body {
+	background-color: black;
+	color:  white;
+}
+
+.loading {
+	background-color: #222222;
+}
+
+#state {
+	padding: 5px;
+}
+
+#state.okay {
+	background-color: #green;
+}
+
+#state.error {
+	background-color: red;
+}
+
+#statusTable tr.failed td {
+	color: #a00;
+	font-style: italic;
+}

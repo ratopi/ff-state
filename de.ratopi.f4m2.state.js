@@ -64,6 +64,34 @@ de.ratopi.f4m2.state = function( directoryURL )
 
 	// ==== private functions ====
 
+	function setState( level, message )
+	{
+		$( '#state' )
+			.text( '' )
+			.attr( 'title', null )
+			.removeClass( 'error' )
+			.removeClass( 'info' )
+			.hide();
+
+		var cssClass = null;
+		if ( level === 'error' )
+		{
+			cssClass = 'error';
+		}
+		else if ( level === 'info' )
+		{
+			cssClass = 'info';
+		}
+
+		$( '#state' )
+			.text( level === 'error' ? "!" : "*" )
+			.attr( 'title', message )
+			.addClass( cssClass )
+			.show();
+	}
+
+	// ---
+
 	function updateDirectory()
 	{
 		$.getJSON( directoryURL ).done(
@@ -75,13 +103,13 @@ de.ratopi.f4m2.state = function( directoryURL )
 		.done(
 			function()
 			{
-				$( '#state' ).text( "*").attr( "title", "Read directory.json from '" + directoryURL + "'" ).css( 'background-color', 'green' ).show();
+				setState( "info", "Read directory.json from '" + directoryURL + "'" );
 			}
 		)
         .fail(
             function( e )
             {
-                $( '#state' ).text( "!" ).attr( "title", "Could not get directory.json from '" + directoryURL + "'" ).css( 'background-color', 'red' ).show();
+				setState( "error", "Could not get directory.json from '" + directoryURL + "'" );
             }
         );
 
@@ -136,47 +164,36 @@ de.ratopi.f4m2.state = function( directoryURL )
 		{
 			// getMetaFor( id ); // prepare table rows
 
-			getMetaFor( id ).row.css( 'background-color', '#303030' );
+			getMetaFor( id ).row.addClass( 'loading' );
 
 			$.getJSON( myDirectory[ id ] )
-			/*
-			.beforeSend(
-				function( id )
-				{
-					return function()
+				.success(
+					function ( id )
 					{
-						getMetaFor( id ).row.css( 'background-color', 'yellow' );
-					}
-				}( id )
-			)
-			*/
-			.success(
-				function ( id )
-				{
-					return function( state )
+						return function( state )
+						{
+							setStateInTable( id, state );
+						}
+					}( id )
+				)
+				.fail(
+					function( id )
 					{
-						setStateInTable( id, state );
-					}
-				}( id )
-			)
-			.fail(
-				function( id )
-				{
-					return function()
+						return function()
+						{
+							setStateInTableFailed( id );
+						}
+					}( id )
+				)
+				.complete(
+					function( id )
 					{
-						setStateInTableFailed( id );
-					}
-				}( id )
-			)
-			.complete(
-				function( id )
-				{
-					return function()
-					{
-						getMetaFor( id ).row.css( 'background-color', 'black' );
-					}
-				}( id )
-			);
+						return function()
+						{
+							getMetaFor( id ).row.removeClass( 'loading' );
+						}
+					}( id )
+				);
 		}
 	}
 
