@@ -2,10 +2,7 @@
 body {
 	background-color: black;
 	color:  white;
-}
-
-.loading {
-	background-color: #222222;
+	font-family: sans-serif;
 }
 
 #state {
@@ -20,7 +17,25 @@ body {
 	background-color: red;
 }
 
+#statusTable {
+	color: #ddd;
+	background-color: #222;
+	padding: 3px;
+}
+
+#statusTable th td {
+	text-align: left;
+}
+
+#statusTable td {
+	padding: 3px;
+}
+
 #statusTable tr.failed td {
-	color: #a00;
+	color: #444;
 	font-style: italic;
+}
+
+#statusTable tr.loading {
+	color: #fff;
 }
