@@ -21,7 +21,7 @@ grep ':' original.directory.json | sed -e 's:" *,::' -e 's:"::g' -e 's+:+ +' | s
 
 done
 
-echo '"":null}" >> directory.json.
+echo '"":null}' >> directory.json.
 
 mv directory.json. directory.json
 
