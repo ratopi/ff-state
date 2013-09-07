@@ -11,7 +11,7 @@ de.ratopi.f4m2.state = function( directoryURL )
 {
 	// ==== private members ====
 
-	var updateInterval = 2 * 1000; // 5 * 60 * 1000; // 5 minutes
+	var updateInterval = 5 * 60 * 1000; // 5 minutes
 
 	var directory = {}; // holds the urls of the Freifunk network state objects ...
 
