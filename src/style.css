@@ -1,0 +1,49 @@
+
+body {
+	background-color: black;
+	color:  white;
+	font-family: sans-serif;
+}
+
+#state {
+	padding: 5px;
+}
+
+#state.info {
+	color: yellow;
+}
+
+#state.success {
+	color: lime;
+}
+
+#state.error {
+	background-color: red;
+}
+
+#statusTable {
+	color: #ddd;
+	background-color: #222;
+	padding: 3px;
+}
+
+#statusTable th td {
+	text-align: left;
+}
+
+#statusTable td {
+	padding: 3px;
+}
+
+#statusTable tr.datalate td {
+	background-color:#300;
+}
+
+#statusTable tr.failed td {
+	color: #f00;
+	font-style: italic;
+}
+
+#statusTable tr.loading {
+	color: #fff;
+}
