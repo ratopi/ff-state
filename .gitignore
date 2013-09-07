@@ -1,2 +1,4 @@
 *.iml
 *~
+src/data/*.json
+src/data/*.json.

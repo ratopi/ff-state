@@ -11,7 +11,7 @@ de.ratopi.f4m2.state = function( directoryURL )
 {
 	// ==== private members ====
 
-	var updateInterval = 5 * 60 * 1000; // 5 minutes
+	var updateInterval = 2 * 1000; // 5 * 60 * 1000; // 5 minutes
 
 	var directory = {}; // holds the urls of the Freifunk network state objects ...
 
@@ -57,7 +57,7 @@ de.ratopi.f4m2.state = function( directoryURL )
 		}
 
 		$( '#state' )
-			.text( level === 'error' ? "!" : "*" )
+			.text( level === 'error' ? "!" : "*" + ( new Date() ))
 			.attr( 'title', message )
 			.addClass( cssClass )
 			.show();
@@ -151,7 +151,7 @@ de.ratopi.f4m2.state = function( directoryURL )
 
 			getMetaFor( id ).row.addClass( 'loading' );
 
-			$.getJSON( myDirectory[ id ] )
+			$.getJSON( 'data/' + id + '.json' ) // myDirectory[ id ] )
 				.success(
 					function ( id )
 					{
