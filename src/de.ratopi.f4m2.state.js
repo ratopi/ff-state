@@ -7,7 +7,7 @@ de.ratopi.f4m2 = de.ratopi.f4m2 || {};
 
 // --- package interface definition
 
-de.ratopi.f4m2.state = function( directoryURL )
+de.ratopi.f4m2.state = function()
 {
 	// ==== private members ====
 
@@ -18,6 +18,10 @@ de.ratopi.f4m2.state = function( directoryURL )
 	var states = {}; // holds the states objects of all freifunk networks.  Keys are the ones used in the directory.
 
 	var meta = {}; // holds the row IDs for each Freifunk network in the state table
+
+	var baseURL = "http://ratopi.lacerta.uberspace.de/freifunk/directory/";
+
+	var directoryURL = baseURL + "directory.json";
 
 	// ==== initial setup ====
 
@@ -151,7 +155,7 @@ de.ratopi.f4m2.state = function( directoryURL )
 
 			getMetaFor( id ).row.addClass( 'loading' );
 
-			$.getJSON( 'data/' + id + '.json' ) // myDirectory[ id ] )
+			$.getJSON( baseURL + id + '.json' ) // myDirectory[ id ] )
 				.success(
 					function ( id )
 					{
