@@ -19,7 +19,7 @@ de.ratopi.f4m2.state = function()
 
 	var meta = {}; // holds the row IDs for each Freifunk network in the state table
 
-	var baseURL = "http://ratopi.lacerta.uberspace.de/freifunk/directory/";
+	var baseURL = "http://freifunk-ffm.no-ip.info/freifunk/directory/";
 
 	var directoryURL = baseURL + "directory.json";
 
